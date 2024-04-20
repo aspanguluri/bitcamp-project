@@ -54,7 +54,9 @@ class InstructionsView extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "We are committed towards sustainable environmental practices and this application centers on applying those principles to agriculture and gardening.\n\nTo utilize this application, take a photograph of a plot of soil and upload it appropriately.\n\nThis software will then inform you as to which variety of soil it is and what crops would be most suitable to grow for the carbon cycle, low emissions, and soil health.",
+                                '''We are committed towards sustainable environmental practices and this application centers on applying those principles to agriculture and gardening.
+                                \nTo utilize this application, take a photograph of a plot of soil and upload it appropriately.
+                                \nThis software will then inform you as to which variety of soil it is and what crops would be most suitable to grow for the carbon cycle, low emissions, and soil health.''',
                                 style: GoogleFonts.poppins(
                                   fontSize: 24,
                                   color: Colors.black,
