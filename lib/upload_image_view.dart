@@ -19,14 +19,11 @@ class _UploadImageViewState extends State<UploadImageView> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if ((result != null)) {
       if (result.files.isNotEmpty) {
-        if (result.files.single.bytes != null) {
-          File file = File(result.files.single.path ?? '');
+
+          File file = File(result.files.first.name);
           // print('Selected file: ${file.path}');
           return file;
-        } else {
-          print('Not a valid file path');
-          return null;
-        }
+
       } else {
         print('The file is empty');
         return null;
@@ -41,8 +38,8 @@ class _UploadImageViewState extends State<UploadImageView> {
     try {
       XFile? picked = await ImagePicker().pickImage(source: ImageSource.camera);
       if (picked != null) {
-        File file = File(picked.path);
-        print('Captured image: ${file.path}');
+        File file = File(picked.name);
+        //print('Captured image: ${file.path}');
         return file;
       } else {
         print('Canceled the photo');
@@ -106,10 +103,9 @@ class _UploadImageViewState extends State<UploadImageView> {
                                 child: Card(
                                   color: Colors.white,
                                   child: TextButton(
-                                    onPressed: () {
-                                      File? file =
-                                          _handleFileUpload(context) as File?;
-                                    },
+                                    onPressed: () =>
+                                          _handleFileUpload(context),
+
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
