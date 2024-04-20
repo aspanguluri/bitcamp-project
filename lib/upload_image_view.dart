@@ -5,6 +5,23 @@ class UploadImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Upload Image",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: const Center(
+        child: Text(
+          "upload an image",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
   }
 }

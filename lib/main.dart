@@ -1,3 +1,4 @@
+import 'package:bitcamp_project/upload_image_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -5,7 +6,7 @@ void main() {
     const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: UploadImageView(),
         ),
       ),
     ),
