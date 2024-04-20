@@ -40,8 +40,9 @@ class InstructionsView extends StatelessWidget {
                         color: Colors.white.withOpacity(0.3),
                         margin: const EdgeInsets.all(8.0),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
                                 "What Does This Application Do?",
@@ -49,6 +50,15 @@ class InstructionsView extends StatelessWidget {
                                 style: GoogleFonts.poppins(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                '''We are committed towards sustainable environmental practices and this application centers on applying those principles to agriculture and gardening.
+                                \nTo utilize this application, take a photograph of a plot of soil and upload it appropriately.
+                                \nThis software will then inform you as to which variety of soil it is and what crops would be most suitable to grow for the carbon cycle, low emissions, and soil health.''',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 24,
                                   color: Colors.black,
                                 ),
                               ),
