@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bitcamp_project/instructions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -89,7 +90,12 @@ class _UploadImageViewState extends State<UploadImageView> {
                             size: 40.0,
                           ),
                           onPressed: () {
-                            //TODO: Insert page route to instructions page
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const InstructionsView(),
+                              ),
+                            );
                           },
                         ),
                       ],
