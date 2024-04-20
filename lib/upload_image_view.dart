@@ -3,9 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class UploadImageView extends StatelessWidget {
+class UploadImageView extends StatefulWidget {
   const UploadImageView({super.key});
 
+  @override
+  State<UploadImageView> createState() => _UploadImageViewState();
+}
+
+class _UploadImageViewState extends State<UploadImageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
