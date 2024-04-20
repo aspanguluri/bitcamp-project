@@ -1,8 +1,11 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:bitcamp_project/instructions_view.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UploadImageView extends StatefulWidget {
   const UploadImageView({super.key});
@@ -12,6 +15,45 @@ class UploadImageView extends StatefulWidget {
 }
 
 class _UploadImageViewState extends State<UploadImageView> {
+  Future<File?> _handleFileUpload(BuildContext context) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if ((result != null)) {
+      if (result.files.isNotEmpty) {
+        if (result.files.single.bytes != null) {
+          File file = File(result.files.single.path ?? '');
+          // print('Selected file: ${file.path}');
+          return file;
+        } else {
+          print('Not a valid file path');
+          return null;
+        }
+      } else {
+        print('The file is empty');
+        return null;
+      }
+    } else {
+      print('No file selected');
+      return null;
+    }
+  }
+
+  Future<File?> _handleCameraImageUpload(BuildContext context) async {
+    try {
+      XFile? picked = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (picked != null) {
+        File file = File(picked.path);
+        print('Captured image: ${file.path}');
+        return file;
+      } else {
+        print('Canceled the photo');
+        return null;
+      }
+    } catch (e) {
+      print('Error picking image: $e');
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +92,104 @@ class _UploadImageViewState extends State<UploadImageView> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    const SizedBox(
+                    SizedBox(
                       height: 500,
                       width: 250,
                       child: Card(
-                        color: Colors.white,
-                        child: Column(
-                          children: [],
+                        color: Colors.white.withOpacity(0.7),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 200,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      File? file =
+                                          _handleFileUpload(context) as File?;
+                                    },
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        const Icon(
+                                          Icons.file_upload,
+                                          color: Colors.brown,
+                                          size: 50.0,
+                                        ),
+                                        Text(
+                                          "Upload a file",
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Expanded(
+                                    child: Divider(
+                                      indent: 5.0,
+                                      endIndent: 5.0,
+                                      thickness: 2.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    "or",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const Expanded(
+                                    child: Divider(
+                                      indent: 5.0,
+                                      endIndent: 5.0,
+                                      thickness: 2.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 15),
+                              SizedBox(
+                                height: 200,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: TextButton(
+                                    onPressed: () =>
+                                        _handleCameraImageUpload(context),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        const Icon(
+                                          Icons.camera_alt,
+                                          color: Colors.brown,
+                                          size: 50.0,
+                                        ),
+                                        Text(
+                                          "Take a Picture",
+                                          style: GoogleFonts.poppins(
+                                            color: Colors.brown,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
