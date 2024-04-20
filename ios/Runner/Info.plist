@@ -45,5 +45,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key> NSPhotoLibraryUsageDescription </key>
+	<string>To upload a picture </string>
+	<key> NSCameraUsageDescription </key>
+	<string> To take a picture of soil conditions </string>
+
 </dict>
 </plist>
