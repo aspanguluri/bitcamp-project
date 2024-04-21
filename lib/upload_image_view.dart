@@ -19,11 +19,8 @@ class _UploadImageViewState extends State<UploadImageView> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if ((result != null)) {
       if (result.files.isNotEmpty) {
-
-          File file = File(result.files.first.name);
-          // print('Selected file: ${file.path}');
-          return file;
-
+        File file = File(result.files.first.name);
+        return file;
       } else {
         print('The file is empty');
         return null;
@@ -103,9 +100,7 @@ class _UploadImageViewState extends State<UploadImageView> {
                                 child: Card(
                                   color: Colors.white,
                                   child: TextButton(
-                                    onPressed: () =>
-                                          _handleFileUpload(context),
-
+                                    onPressed: () => _handleFileUpload(context),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
